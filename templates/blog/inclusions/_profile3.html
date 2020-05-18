@@ -1,0 +1,16 @@
+<div class="am-g am-g-fixed blog-fixed blog-content">
+    <div class="am-u-sm-12">
+        <h1 class="blog-text-center" style="margin: 2rem 0rem 4rem;">-- About Me --</h1>
+        {% for file in profile3_list %}
+        <div class="timeline-year">
+                <ul>
+                <img class="" src="/coverimage/{{ file.image3 }}" alt="寇志翔" style="display: block;max-width: 50%;margin: 0 auto;">
+                <p style="font-size: 18px;margin: 2rem 0rem;">
+                  {{ file.text3 }}
+                </p>
+                </ul>
+        </div>
+        {% endfor %}
+        <hr>
+    </div>
+</div>

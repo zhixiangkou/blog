@@ -1,0 +1,143 @@
+{% load static %}
+{% load blog_extras %}
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>BLOG index with sidebar & slider  | Amaze UI Examples</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <link rel="icon" type="image/png" href="{% static 'blog/assets/i/favicon.png' %}">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="192x192" href="{% static 'blog/assets/i/app-icon72x72@2x.png' %}">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+  <link rel="apple-touch-icon-precomposed" href="{% static 'blog/assets/i/app-icon72x72@2x.png' %}">
+  <meta name="msapplication-TileImage" content="{% static 'blog/assets/i/app-icon72x72@2x.png' %}">
+  <meta name="msapplication-TileColor" content="#0e90d2">
+  <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="{% static 'blog/assets/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'blog/assets/css/amazeui.min.css' %}">
+  <link rel="stylesheet" href="{% static 'blog/assets/css/app.css' %}">
+  <link rel="stylesheet" href="{% static 'blog/assets/css/custom.css' %}">
+  <script src="{% static 'blog/assets/js/jquery.min.js' %}"></script>
+  <script src="{% static 'blog/assets/js/bootstrap.min.js' %}"></script>
+</head>
+
+<body id="blog">
+
+<header class="am-g am-g-fixed blog-fixed blog-text-center blog-header">
+    <div class="am-u-sm-8 am-u-sm-centered">
+        <h2 class="am-hide-sm-only" style="font-size: 40px">志翔的博客</h2>
+    </div>
+</header>
+<hr>
+
+<!-- nav start -->
+<nav class="am-g am-g-fixed blog-fixed blog-nav">
+<button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only blog-button" data-am-collapse="{target: '#blog-collapse'}" ><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+  <div class="am-collapse am-topbar-collapse" id="blog-collapse">
+    <ul class="am-nav am-nav-pills am-topbar-nav" style="font-size: 20px">
+      <li class="am-active"><a href="{% url 'blog:index' %}">首页</a></li>
+<!--      <li><a href="lw-article.html">博客</a></li>-->
+      <li><a href="{% url 'blog:timeline' %}">存档</a></li>
+      <li><a href="{% url 'blog:about' %}">关于</a></li>
+      <li><a href="{% url 'blog:contact' %}">联系</a></li>
+    </ul>
+    <form class="am-topbar-form am-topbar-right am-form-inline" role="search" action="{% url 'blog:search' %}">
+      <div class="am-form-group" style="border: 1px solid #ccc;">
+        <input type="search" name="q" class="am-form-field am-input-sm" style="border: none;" placeholder="搜索">
+        <button type="submit" style="">
+        	<span class="ion-ios-search-strong"></span></button>
+      </div>
+    </form>
+  </div>
+</nav>
+<hr>
+<!-- nav end -->
+
+<!-- content start -->
+{% block content %}
+<div class="am-g am-g-fixed blog-fixed">
+    <div class="am-u-md-8 am-u-sm-12">
+        {% block main %}
+        {% endblock main %}
+        
+        <ul class="am-pagination" style="text-align: center;">
+            {% if is_paginated %}
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}">&laquo; Prev</a></li>
+            {% endif %}
+            {% for page in page_obj.pages %}
+              {% if page %}
+                {% ifequal page page_obj.number %}
+                <li><a href="#" style="background-color: #ddd;">{{ page }}</a></li>
+                {% else %}
+                <li><a href="?{{ page.querystring }}" style="">{{ page }}</a></li>
+                {% endifequal %}
+              {% else %}
+              ...
+              {% endif %}
+            {% endfor %}
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}">Next &raquo;</a></li>
+            {% endif %}
+            {% endif %}
+        </ul>
+        {% block comments %}
+        {% endblock comments %}
+    </div>
+
+
+    <div class="am-u-md-4 am-u-sm-12 blog-sidebar">
+        {% block contents %}
+
+        {% endblock contents %}
+        {% block recent_posts %}
+        
+        {% endblock recent_posts %}
+        {% block toc %}
+        {% show_profile1 %}
+        {% endblock toc %}
+        {% block category %}
+        {% show_categories %}
+        {% endblock category %}
+        {% block archive %}
+        {% show_archives %}
+        {% endblock archive %}
+        {% block tag %}
+        {% show_tags %}
+        {% endblock tag %}
+
+    </div>
+</div>
+{% endblock content %}
+<!-- content end -->
+
+
+
+  <footer class="blog-footer">
+    <div class="blog-text-center">Copyright © 2020 Made by zhixiang</div>
+  </footer>
+
+
+
+
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="{% static 'blog/assets/js/amazeui.ie8polyfill.min.js' %}"></script>
+<![endif]-->
+<script src="{% static 'blog/assets/js/amazeui.min.js' %}"></script>
+</body>
+</html>

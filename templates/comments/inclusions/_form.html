@@ -1,0 +1,38 @@
+<hr>
+
+<form action="{% url 'comments:comment' post.pk %}" method="post" class="am-form am-g">
+    <h3 class="blog-comment">评论</h3>
+  <fieldset>
+      {% csrf_token %}
+    <div class="am-form-group am-u-sm-4 blog-clear-left">
+<!--        <input type="text" class="" placeholder="名字">-->
+        <label for="{{ form.name.id_for_label }}">{{ form.name.label }}：</label>
+        {{ form.name }}
+        {{ form.name.errors }}
+    </div>
+    <div class="am-form-group am-u-sm-4">
+<!--      <input type="email" class="" placeholder="邮箱">-->
+         <label for="{{ form.email.id_for_label }}">{{ form.email.label }}：</label>
+        {{ form.email }}
+        {{ form.email.errors }}
+    </div>
+
+    <div class="am-form-group am-u-sm-4 blog-clear-right">
+<!--      <input type="password" class="" placeholder="网站">-->
+        <label for="{{ form.url.id_for_label }}">{{ form.url.label }}：</label>
+        {{ form.url }}
+        {{ form.url.errors }}
+    </div>
+
+    <div class="am-form-group">
+<!--      <textarea class="" rows="5" placeholder="一字千金"></textarea>-->
+        <label for="{{ form.text.id_for_label }}">{{ form.text.label }}：</label>
+        {{ form.text }}
+        {{ form.text.errors }}
+    </div>
+
+    <p><button type="submit" class="am-btn am-btn-default">发表评论</button></p>
+  </fieldset>
+</form>
+
+<hr>

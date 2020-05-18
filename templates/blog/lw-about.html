@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load blog_extras %}
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>BLOG index with sidebar & slider  | Amaze UI Examples</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <link rel="icon" type="image/png" href="{% static 'blog/assets/i/favicon.png' %}">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="192x192" href="{% static 'blog/assets/i/app-icon72x72@2x.png' %}">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+  <link rel="apple-touch-icon-precomposed" href="{% static 'blog/assets/i/app-icon72x72@2x.png' %}">
+  <meta name="msapplication-TileImage" content="{% static 'blog/assets/i/app-icon72x72@2x.png' %}">
+  <meta name="msapplication-TileColor" content="#0e90d2">
+  <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="{% static 'blog/assets/css/amazeui.min.css' %}">
+  <link rel="stylesheet" href="{% static 'blog/assets/css/app.css' %}">
+</head>
+
+<body id="blog">
+
+<header class="am-g am-g-fixed blog-fixed blog-text-center blog-header">
+    <div class="am-u-sm-8 am-u-sm-centered">
+        <h2 class="am-hide-sm-only" style="font-size: 40px">志翔的博客</h2>
+    </div>
+</header>
+<hr>
+<!-- nav start -->
+<nav class="am-g am-g-fixed blog-fixed blog-nav">
+<button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only blog-button" data-am-collapse="{target: '#blog-collapse'}" ><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+  <div class="am-collapse am-topbar-collapse" id="blog-collapse">
+    <ul class="am-nav am-nav-pills am-topbar-nav" style="font-size: 20px">
+      <li class="am-active"><a href="lw-index.html">首页</a></li>
+      <li><a href="lw-article.html">博客</a></li>
+      <!-- <li><a href="lw-img.html">图片库</a></li> -->
+      <!-- <li><a href="lw-article-fullwidth.html">全宽页面</a></li> -->
+      <li><a href="lw-timeline.html">存档</a></li>
+      <li><a href="#">关于</a></li>
+      <li><a href="#">联系</a></li>
+    </ul>
+    <form class="am-topbar-form am-topbar-right am-form-inline" role="search">
+      <div class="am-form-group" style="border: 1px solid #ccc;">
+        <input type="text" class="am-form-field am-input-sm" style="border: none;" placeholder="搜索">
+        <button type="submit" style="background-color: white margin=0">
+        	<span class="ion-ios-search-strong"></span></button>
+      </div>
+    </form>
+  </div>
+</nav>
+<hr>
+<!-- nav end -->
+
+<!-- content srart -->
+{% block content %}
+{% show_profile3 %}
+{% endblock content %}
+<!-- content end -->
+
+
+
+  <footer class="blog-footer">
+    <div class="blog-text-center">© 2020 Made by zhixiang</div>    
+  </footer>
+
+
+
+
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="{% static 'blog/assets/js/amazeui.ie8polyfill.min.js' %}"></script>
+<![endif]-->
+<script src="{% static 'blog/assets/js/amazeui.min.js' %}"></script>
+</body>
+</html>

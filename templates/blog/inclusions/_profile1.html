@@ -1,0 +1,9 @@
+<div class="blog-sidebar-widget blog-bor">
+    <h2 class="blog-text-center blog-title"><span>About ME</span></h2>
+    {% for file in profile1_list %}
+    <img src="/coverimage/{{ file.image1 }}" alt="about me" class="blog-entry-img" >
+    <p>寇志翔</p>
+    <p>{{ file.text1|linebreaksbr }}</p>
+    {% endfor %}
+    <p></p>
+</div>

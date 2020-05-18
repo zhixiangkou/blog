@@ -1,0 +1,11 @@
+<div class="blog-sidebar-widget blog-bor">
+    <h2 class="blog-title"><span>Articles</span></h2>
+    <ul class="am-list">
+        {% for post in recent_post_list %}
+        <li><a href="{{ post.get_absolute_url }}" style="overflow: hidden;
+        white-space: nowrap; text-overflow: ellipsis; display: block;">{{ post.title }}</a></li>
+        {% empty %}
+        暂无文章！
+        {% endfor %}
+    </ul>
+</div>
