@@ -24,7 +24,7 @@ SECRET_KEY = '@^5aa%8*%(*(7q1*e*gq0-6(kiprtp74ca_z(llwyjt4rk@!4j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost ', 'luckydog.cloud']
 
 # Application definition
 
@@ -120,6 +120,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'blog/static/blog')
 MEDIA_URL = '/coverimage/'
